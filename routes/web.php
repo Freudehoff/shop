@@ -34,3 +34,23 @@ Route::group(['prefix' => 'tags'], function () {
     Route::patch('/{tag}', \App\Http\Controllers\Tag\UpdateController::class)->name('tag.update');
     Route::delete('/{tag}', \App\Http\Controllers\Tag\DeleteController::class)->name('tag.delete');
 });
+
+Route::group(['prefix' => 'colors'], function () {
+    Route::get('/', \App\Http\Controllers\Color\IndexController::class)->name('color.index');
+    Route::get('/create', \App\Http\Controllers\Color\CreateController::class)->name('color.create');
+    Route::post('/', \App\Http\Controllers\Color\StoreController::class)->name('color.store');
+    Route::get('/{color}/edit', \App\Http\Controllers\Color\EditController::class)->name('color.edit');
+    Route::get('/{color}', \App\Http\Controllers\Color\ShowController::class)->name('color.show');
+    Route::patch('/{color}', \App\Http\Controllers\Color\UpdateController::class)->name('color.update');
+    Route::delete('/{color}', \App\Http\Controllers\Color\DeleteController::class)->name('color.delete');
+});
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/', \App\Http\Controllers\User\IndexController::class)->name('user.index');
+    Route::get('/create', \App\Http\Controllers\User\CreateController::class)->name('user.create');
+    Route::post('/', \App\Http\Controllers\User\StoreController::class)->name('user.store');
+    Route::get('/{user}/edit', \App\Http\Controllers\User\EditController::class)->name('user.edit');
+    Route::get('/{user}', \App\Http\Controllers\User\ShowController::class)->name('user.show');
+    Route::patch('/{user}', \App\Http\Controllers\User\UpdateController::class)->name('user.update');
+    Route::delete('/{user}', \App\Http\Controllers\User\DeleteController::class)->name('user.delete');
+});
