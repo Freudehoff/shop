@@ -7,6 +7,7 @@ use App\Http\Requests\Product\StoreRequest;
 use App\Models\ColorProduct;
 use App\Models\Product;
 use App\Models\ProductTag;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
@@ -14,7 +15,8 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        $name = md5(Carbon::now() . '_' . $data['preview_image']->getClientOriginalName()) . '.' . $data['preview_image']->getClientOriginalExtension();
+        $data['preview_image'] = Storage::disk('public')->putFileAs('/images', $data['preview_image'], $name);
         $tagsIds = $data['tags'];
         $colorsIds = $data['colors'];
         unset($data['tags'], $data['colors']);

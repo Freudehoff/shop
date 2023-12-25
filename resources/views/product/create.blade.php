@@ -26,51 +26,108 @@
                 <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control" placeholder="Наименование">
+                        <label for="title">Наименование</label>
+                        <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control"
+                               placeholder="Наименование">
+                        @error('title')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" name="description" value="{{ old('description') }}" class="form-control" placeholder="Краткое описание">
+                        <label for="description">Краткое описание</label>
+                        <input type="text" name="description" id="description" value="{{ old('description') }}"
+                               class="form-control"
+                               placeholder="Краткое описание">
+                        @error('description')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <textarea name="content" class="form-control" placeholder="Контент">{{ old('content') }}</textarea>
+                        <label for="summernote">Контент</label>
+                        <textarea name="content" id="summernote" class="form-control"
+                                  placeholder="Контент">{{ old('content') }}</textarea>
+                        @error('content')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="number" name="price" value="{{ old('price') }}" class="form-control" placeholder="Цена">
+                        <label for="price">Цена</label>
+                        <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control"
+                               placeholder="Цена">
+                        @error('price')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="number" name="count" value="{{ old('count') }}" class="form-control" placeholder="Количество на складе">
+                        <label for="count">Количество на складе</label>
+                        <input type="number" name="count" id="count" value="{{ old('count') }}" class="form-control"
+                               placeholder="Количество на складе">
+                        @error('count')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="preview_image" value="{{ old('preview_image') }}" type="file" class="custom-file-input" id="exampleInputFile">
+                                <input name="preview_image" value="{{ 'preview_image' }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">Выберите превью</label>
                             </div>
                         </div>
+                        @error('preview_image')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <select name="category_id" class="form-control select2" style="width: 100%;">
+                        <label for="category_id">Выберите категорию</label>
+                        <select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
                             <option selected="selected" disabled>Выберите категорию</option>
                             @foreach($categories as $category)
-                                <option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option
+                                    {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Выберите теги"
+                        <label for="tags">Выберите теги</label>
+                        <select name="tags[]" id="tags" class="tags" multiple="multiple"
+                                data-placeholder="Выберите теги"
                                 style="width: 100%;">
                             @foreach($tags as $tag)
-                                <option {{ old('tags') == $tag->id ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                <option
+                                    @if(old('tags'))
+                                        @for( $i =0; $i < count(old('tags')); $i++)
+                                            {{ old('tags.'.$i) == $tag->id ? 'selected' : '' }}
+                                        @endfor
+                                    @endif
+                                    value="{{ $tag->id }}">{{ $tag->title }}</option>
                             @endforeach
                         </select>
+                        @error('tags')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Выберите цвета"
+                        <label for="colors">Выберите цвета</label>
+                        <select name="colors[]" id="colors" class="colors" multiple="multiple"
+                                data-placeholder="Выберите цвета"
                                 style="width: 100%;">
                             @foreach($colors as $color)
-                                <option {{ old('colors') == $color->id ? 'selected' : '' }} value="{{ $color->id }}">{{ $color->title }}</option>
+                                <option
+                                    @if(old('colors'))
+                                        @for( $i =0; $i < count(old('colors')); $i++)
+                                            {{ old('colors.'.$i) == $color->id ? 'selected' : '' }}
+                                        @endfor
+                                    @endif
+                                    value="{{ $color->id }}">{{ $color->title }}</option>
                             @endforeach
                         </select>
+                        @error('colors')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Добавить">

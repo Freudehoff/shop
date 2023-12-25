@@ -52,7 +52,7 @@
                                 </tr>
                                 <tr>
                                     <td>Контент</td>
-                                    <td>{{ $product->content }}</td>
+                                    <td>{!! $product->content !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Цена</td>
@@ -64,7 +64,9 @@
                                 </tr>
                                 <tr>
                                     <td>Превью</td>
-                                    <td>{{ $product->preview_image }}</td>
+                                    <td><img style="width: 50px; height: 50px"
+                                             src="{{ url('/storage/'.$product->preview_image) }}" alt="">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Категория</td>

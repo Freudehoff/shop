@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'preview_image' => 'required|file',
+            'preview_image' => 'nullable|file',
             'price' => 'required|integer',
             'count' => 'required|integer',
             'is_published' => 'nullable|boolean',

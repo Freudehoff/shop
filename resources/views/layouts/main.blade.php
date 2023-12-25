@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }} ">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 </head>
@@ -227,6 +229,18 @@
         //Initialize Select2 Elements
         $('.tags').select2()
         $('.colors').select2()
+        bsCustomFileInput.init()
+        $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        })
     })
 </script>
 <!-- Bootstrap 4 -->
@@ -235,7 +249,16 @@
 <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }} "></script>
+<style>
+    .custom-file-input:lang(ru)~.custom-file-label::after {
+        content: "...";
+    }
+</style>
 </body>
 </html>
