@@ -51,6 +51,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="old_price">Старая цена</label>
+                        <input type="number" name="old_price" id="old_price" value="{{ old('old_price') }}" class="form-control"
+                               placeholder="Цена">
+                        @error('old_price')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="price">Цена</label>
                         <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control"
                                placeholder="Цена">
