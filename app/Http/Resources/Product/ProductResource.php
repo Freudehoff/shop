@@ -3,7 +3,7 @@
 namespace App\Http\Resources\Product;
 
 use App\Http\Resources\Category\CategoryResource;
-use App\Http\Resources\Group\GroupResource;
+use App\Http\Resources\Color\ColorResource;
 use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
