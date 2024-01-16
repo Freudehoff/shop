@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\UpdateRequest;
-use App\Models\ColorProduct;
 use App\Models\Product;
-use App\Models\ProductTag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 

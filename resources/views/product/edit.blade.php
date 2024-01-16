@@ -99,6 +99,19 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="group_id">Выберите группу</label>
+                        <select name="group_id" id="group_id" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" disabled>Выберите группу</option>
+                            @foreach($groups as $group)
+                                <option
+                                    {{ $group->id == $product->group_id ? 'selected' : '' }} value="{{ $group->id }}">{{ $group->title }}</option>
+                            @endforeach
+                        </select>
+                        @error('group_id')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="tags">Выберите теги</label>
                         <select name="tags[]" id="tags" class="tags" multiple="multiple"
                                 data-placeholder="Выберите теги"

@@ -87,6 +87,19 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="group_id">Выберите группу</label>
+                        <select name="group_id" id="group_id" class="form-control select2" style="width: 100%;">
+                            <option selected="selected" disabled>Выберите группу</option>
+                            @foreach($groups as $group)
+                                <option
+                                    {{ old('group_id') == $group->id ? 'selected' : '' }} value="{{ $group->id }}">{{ $group->title }}</option>
+                            @endforeach
+                        </select>
+                        @error('group_id')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="category_id">Выберите категорию</label>
                         <select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
                             <option selected="selected" disabled>Выберите категорию</option>

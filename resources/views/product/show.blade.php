@@ -74,7 +74,11 @@
                                 </tr>
                                 <tr>
                                     <td>Категория</td>
-                                    <td>{{ $product->category->title }}</td>
+                                    <td>{{ $product->category?->title }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Группа</td>
+                                    <td>{{ $product->group?->title }}</td>
                                 </tr>
                                 <tr>
                                     <td>Теги</td>
