@@ -20,7 +20,8 @@ class EditController extends Controller
 
         $product_tags = $product->tags;
         $product_colors = $product->colors;
+        $product_images = $product->productImages;
 
-        return view('product.edit', compact('product', 'categories','groups','tags','colors','product_tags','product_colors'));
+        return view('product.edit', compact('product', 'categories','groups','tags','colors','product_tags','product_colors','product_images'));
     }
 }

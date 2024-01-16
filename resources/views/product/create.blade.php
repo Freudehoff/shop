@@ -87,6 +87,42 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ 'product_images[0]' }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[0]')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ 'product_images[1]' }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[1]')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ 'product_images[2]' }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[2]')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="group_id">Выберите группу</label>
                         <select name="group_id" id="group_id" class="form-control select2" style="width: 100%;">
                             <option selected="selected" disabled>Выберите группу</option>

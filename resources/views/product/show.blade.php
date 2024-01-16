@@ -73,6 +73,15 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Галерея</td>
+                                    <td>
+                                        @foreach($images as $image)
+                                            <img style="width: 50px; height: 50px"
+                                                 src="{{ url('/storage/'.$image->file_path) }}" alt="">
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Категория</td>
                                     <td>{{ $product->category?->title }}</td>
                                 </tr>

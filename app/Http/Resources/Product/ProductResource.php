@@ -3,7 +3,6 @@
 namespace App\Http\Resources\Product;
 
 use App\Http\Resources\Category\CategoryResource;
-use App\Http\Resources\Color\ColorResource;
 use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -30,6 +29,7 @@ class ProductResource extends JsonResource
             'count' => $this->count,
             'is_published' => $this->is_published,
             'category' => new CategoryResource($this->category),
+            'product_images' => ProductImageResource::collection($this->productImages),
             'group_products' => ProductMinResource::collection($products),
         ];
     }

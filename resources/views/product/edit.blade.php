@@ -69,6 +69,7 @@
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                     </div>
+                    <b>Превью</b>
                     <div class="form-group">
                         <div class="mb-3">
                             <img class="mx-auto d-block" style="width: 100px; height: 100px"
@@ -82,6 +83,55 @@
                             </div>
                         </div>
                         @error('preview_image')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <b>Галерея</b>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <img class="mx-auto d-block" style="width: 100px; height: 100px"
+                                 src="{{ url('/storage/'. $product_images[0]->file_path) }}" alt="">
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ $product_images[0]->file_path }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[0]')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <img class="mx-auto d-block" style="width: 100px; height: 100px"
+                                 src="{{ url('/storage/'. $product_images[1]->file_path) }}" alt="">
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ $product_images[1]->file_path }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[1]')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <img class="mx-auto d-block" style="width: 100px; height: 100px"
+                                 src="{{ url('/storage/'. $product_images[2]->file_path) }}" alt="">
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="product_images[]" value="{{ $product_images[2]->file_path }}" type="file"
+                                       class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Загрузить в галерею</label>
+                            </div>
+                        </div>
+                        @error('product_images[2]')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                     </div>

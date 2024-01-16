@@ -11,6 +11,7 @@ class ShowController extends Controller
     {
         $tags = $product->tags;
         $colors = $product->colors;
-        return view('product.show', compact('product', 'tags','colors'));
+        $images = $product->productImages;
+        return view('product.show', compact('product', 'tags','colors','images'));
     }
 }

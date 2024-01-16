@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('group_id')->nullable()->index()->constrained('groups');
+        Schema::create('product_images', function (Blueprint $table) {
+            $table->id();
+            $table->string('file_path');
+            $table->foreignId('product_id')->index()->constrained('products')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -25,9 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['group_id']);
-            $table->dropColumn('group_id');
-        });
+        Schema::dropIfExists('product_images');
     }
 };
