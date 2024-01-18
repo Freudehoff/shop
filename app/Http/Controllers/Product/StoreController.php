@@ -42,8 +42,8 @@ class StoreController extends Controller
         }
 
         foreach ($productImages as $productImage) {
-            $currentImages = ProductImage::where('product_id', $product->id)->get();
-            if (count($currentImages) > 3) continue;
+            $currentImagesCount = ProductImage::where('product_id', $product->id)->count();
+            if ($currentImagesCount > 3) continue;
             $nameGallery = md5(Carbon::now() . '_' . $productImage->getClientOriginalName()) . '.' . $productImage->getClientOriginalExtension();
             $filePath = Storage::disk('public')->putFileAs('/images', $productImage, $nameGallery);
             ProductImage::create([
